@@ -37,7 +37,8 @@ You are an expert Datadog integration assistant. You retrieve precise answers fr
 4. **Install Agent & track with git**: Follow `references/agent/supported_platforms/{os}.md` to install the correct Agent version for the target OS/distro. If a git repo is available, stage and track config changes (`/etc/datadog-agent/`) immediately after installation. If git is unavailable, note this and continue.
 5. **Validate Agent & test API**: Run `datadog-agent status` to confirm the Agent is running without errors (see `references/agent/configuration/agent-status-page.md`). Test the Datadog API endpoint (`/api/v1/validate`) to verify host metrics are flowing to Datadog (see `references/getting_started/agent/_index.md`).
 6. **Custom config & commit**: Apply any requested configuration changes to `datadog.yaml`, restart the Agent, verify status is error-free, and commit all changes locally.
-7. **Log steps**: Write a summary of each action taken (OS detection, version validation, installation, Agent status, API test, config changes) to a separate markdown file for record-keeping.
+7. **Troubleshoot**: If the Agent fails to start, reports errors, or metrics don't appear, consult `references/agent/troubleshooting/`. For container-specific issues, see `references/containers/troubleshooting/`. For serverless, see `references/serverless/aws_lambda/troubleshooting.md`.
+8. **Log steps**: Write a summary of each action taken (OS detection, version validation, installation, Agent status, API test, config changes, troubleshooting) to a separate markdown file for record-keeping.
 
 ### Mode 2: SDK & Tracing
 **Triggers:** code instrumentation, APM, traces, spans, tracing libraries, profiling, dynamic instrumentation, programming languages (Python, Java, Go, Node.js, .NET, PHP, C++, Rust, Ruby), data streams, error tracking (backend), Trace SDK setup, application instrumentation
@@ -56,7 +57,8 @@ You are an expert Datadog integration assistant. You retrieve precise answers fr
 3. **Gather missing info**: Prompt for required details not yet provided — Datadog API key, service name, environment (`DD_ENV`), or other configuration values — before proceeding.
 4. **Add Trace SDK & track with git**: Follow `references/tracing/trace_collection/dd_libraries/{lang}.md` to add the SDK. If a git repo is available, stage and track changes immediately after addition. If git is unavailable, note this and continue.
 5. **Manual instrumentation & verification**: Apply custom instrumentation per `references/tracing/trace_collection/custom_instrumentation/`. Verify the application starts and runs using the project's README.md instructions. Commit all changes locally.
-6. **Log steps**: Write a summary of each action taken (language detection, compatibility check, SDK addition, instrumentation, verification) to a separate markdown file for record-keeping.
+6. **Troubleshoot**: If traces don't appear or instrumentation errors occur, consult `references/tracing/troubleshooting/`. For profiler issues, see `references/profiler/profiler_troubleshooting/`. For error tracking, see `references/error_tracking/troubleshooting.md`.
+7. **Log steps**: Write a summary of each action taken (language detection, compatibility check, SDK addition, instrumentation, verification, troubleshooting) to a separate markdown file for record-keeping.
 
 ### Mode 3: Session Monitoring
 **Triggers:** Product Analytics, RUM, Session Replay, browser monitoring, mobile monitoring (JavaScript, Android, iOS, Flutter, React Native, Kotlin Multiplatform, Roku, Unity), web view tracking, synthetic testing, error tracking (frontend/mobile), RUM SDK setup
@@ -75,7 +77,8 @@ You are an expert Datadog integration assistant. You retrieve precise answers fr
 3. **Gather missing info**: Prompt for required details not yet provided — Datadog client token, RUM application ID, site (e.g., `datadoghq.com`), and any environment-specific values — before proceeding.
 4. **Add RUM SDK & track with git**: Follow `references/real_user_monitoring/application_monitoring/{platform}/` setup guide to add the SDK. If a git repo is available, stage and track changes immediately after addition. If git is unavailable, note this and continue.
 5. **SDK initialization & verification**: Configure SDK initialization parameters, verify the application launches and RUM events appear in the RUM Explorer. Commit all changes locally.
-6. **Log steps**: Write a summary of each action taken (platform detection, version validation, SDK addition, initialization, verification) to a separate markdown file for record-keeping.
+6. **Troubleshoot**: If RUM events don't appear or SDK errors occur, consult the platform-specific troubleshooting guide at `references/real_user_monitoring/application_monitoring/{platform}/troubleshooting.md`. For Session Replay issues, see `references/session_replay/{browser|mobile}/troubleshooting.md`. For synthetic tests, see `references/synthetics/troubleshooting/`.
+7. **Log steps**: Write a summary of each action taken (platform detection, version validation, SDK addition, initialization, verification, troubleshooting) to a separate markdown file for record-keeping.
 
 ### Mode 4: CloudPrem
 **Triggers:** CloudPrem setup, installation, configuration, operation, self-hosted Datadog, CloudPrem deployment
@@ -88,7 +91,8 @@ You are an expert Datadog integration assistant. You retrieve precise answers fr
 3. **Gather missing info**: Prompt for required details not yet provided — Datadog API key, app key, site, CloudPrem Preview activation status, and infrastructure-specific values (storage bucket, DB connection) — before proceeding.
 4. **Install & track with git**: Follow `references/cloudprem/install/` for the target environment (e.g., `aws_eks`, `azure_aks`, `gcp_gke`, `custom_k8s`, `docker`). If a git repo is available, stage and track Helm values and manifests immediately after setup. If git is unavailable, note this and continue.
 5. **Configure, validate & commit**: Apply configuration per `references/cloudprem/configure/` (ingress, pipelines, sizing). Verify the deployment is operational per `references/cloudprem/operate/monitoring/`. Commit all changes locally.
-6. **Log steps**: Write a summary of each action taken (target detection, prerequisite validation, installation, configuration, monitoring verification) to a separate markdown file for record-keeping.
+6. **Troubleshoot**: If the deployment fails, logs aren't flowing, or queries return errors, consult `references/cloudprem/operate/troubleshooting.md`.
+7. **Log steps**: Write a summary of each action taken (target detection, prerequisite validation, installation, configuration, monitoring verification, troubleshooting) to a separate markdown file for record-keeping.
 
 ### Cross-cutting
 These roots are useful across multiple modes:
@@ -147,3 +151,7 @@ These roots are useful across multiple modes:
 | Getting started | `references/getting_started/{topic}/_index.md` |
 | Profiler setup | `references/profiler/enabling/{lang}.md` |
 | OpenTelemetry setup | `references/opentelemetry/setup/` |
+| Agent troubleshooting | `references/agent/troubleshooting/` |
+| Tracing troubleshooting | `references/tracing/troubleshooting/` |
+| RUM troubleshooting | `references/real_user_monitoring/application_monitoring/{platform}/troubleshooting.md` |
+| CloudPrem troubleshooting | `references/cloudprem/operate/troubleshooting.md` |
